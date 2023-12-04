@@ -8,7 +8,7 @@ CACHE = Path(__file__).parent / "cache"
 def get_input(day: int, year: int):
     YEAR_CACHE = CACHE / str(year)
     YEAR_CACHE.mkdir(parents=True, exist_ok=True)
-    cookie_file = CACHE / "cookie.txt"
+    cookie_file = CACHE / "cookie2.txt"
     day_file = YEAR_CACHE / f"day{day}.txt"
     if day_file.exists():
         with open(day_file) as f:
