@@ -25,13 +25,6 @@ for y, line in enumerate(schem):
     number = ""
     has_sym = False
 
-    def check_sym(x, y):
-        has_sym = is_symbol(schem[y][x])
-        if schem[y][x] != "*":
-            return has_sym
-        line_gears.append(y * len(line) + x)
-        return has_sym
-
     for x, d in enumerate(line):
         if not d.isdigit():
             if has_sym and number:
@@ -47,12 +40,14 @@ for y, line in enumerate(schem):
             continue
         number += d
 
-        for sym_x in [-1, 0, 1]:
-            for sym_y in [-1, 0, 1]:
+        for sym_x in [x - 1, x, x + 1]:
+            for sym_y in [y - 1, y, y + 1]:
                 if sym_y == 0 and sym_x == 0:
                     continue
-                has_sym = has_sym or check_sym(x + sym_x, y + sym_y)
-
+                has_sym = has_sym or is_symbol(schem[sym_y][sym_x])
+                if schem[sym_y][sym_x] != "*":
+                    continue
+                line_gears.append(sym_y * len(line) + sym_x)
 
 print(sum(part_nums))
 good_gears = [value for key, value in gears.items() if len(value) == 2]
