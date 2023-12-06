@@ -24,7 +24,6 @@ for i, card in enumerate(input.split("\n")):
         for j in range(matches):
             card_mult[i + j + 1] += card_mult[i]
         total += 2 ** (matches - 1)
-        total_mult = card_mult[i] * 2 ** (matches - 1)
 
 print(total)
 print(sum(card_mult))
