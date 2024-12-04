@@ -1,0 +1,13 @@
+[package]
+name = "rust-2024"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "^0.12" , features = ["blocking"] }
+futures-io = { version = "0.3.31" }
+
+
+[[bin]]
+name = "day1"
+path = "src/day1.rs"
